@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
 import './App.css';
+import Home from './Home';
+import Contact from './Contact'
+import NotFound from './NotFound';
+import Clubs from './Clubs';
+
 
 function App() {
   const [info, setInfo] = useState('');
@@ -25,23 +30,15 @@ function App() {
     <div className="App">
       <Navbar />
       <div className="content">
-        <div>
-          <h1>Assmu Website</h1>
-          <p>
-            {
-              arr.map((blogs, i) => {
-                return (
-                  <div>
-                    <img src={`${blogs.metadata.hero.imgix_url}`} key={i} alt='something'></img>
-                    <div dangerouslySetInnerHTML={{__html:blogs.content}}></div>
-                  </div>
-                )
-              })
-            }
-          </p>
-        </div>
-      </div> 
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path = "/clubs" element={<Clubs/>} />
+          <Route path = "/contact" element={<Contact />} />
+          <Route path = "*" element={<NotFound />} /> 
+        </Routes>
+      </div>
     </div>
+
     </Router>
   );
 }

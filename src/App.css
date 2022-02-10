@@ -8,29 +8,37 @@
 * {
   margin: 0;
   font-family: "Outfit";
-  color: lightcoral;
+  color: #BA0C2F;
 }
 
 .content {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
+
+  margin: 20x auto;
+  padding: 5px;
+
 }
 
+/* ASSMU LOGO STYLE */
+#logo {
+  width: 100px;
+}
 /* navbar styling */
 .navbar {
   padding: 20px;
+  font-weight: bold;
+  border: gray;
   display: flex;
   align-items: center;
-  max-width: 600px;
+  justify-content: center;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
 }
 .navbar h1 {
-  color:rgb(240, 87, 87)
+  color: #BA0C2F;
 }
 .navbar .links {
   margin-left: auto;
+  margin: 10px;
 }
 .navbar a {
   margin-left: 16px;
@@ -38,5 +46,82 @@
   padding: 6px;
 }
 .navbar a:hover{
-  color:blueviolet;
+  color:blue;
+}
+
+/* Question form styling */
+.form {
+  padding: 20px;
+  max-width: 800px;
+  background-color: rgb(173, 173, 173);
+  box-shadow: 4px 5px 14px 0px rgba(0,0,0,0.69);
+  border-radius: 7px;
+}
+
+.form h1 {
+  padding:5px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.form label {
+  text-align: left;
+  display:block;
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.form input, .form textarea {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid white;
+  box-sizing: border-box;
+  display:block;
+  border-radius: 5px;
+}
+
+.form button {
+  border:0;
+  font-size: larger;
+  padding: 8px;
+  border-radius: 5px;
+  cursor:pointer;
+}
+
+/* Club card styling */
+.allclubs {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+  gap:2rem;
+  justify-content: center;
+}
+
+.card {
+  overflow: hidden;
+  box-shadow: 0 2px 20px lightgrey;
+  border-radius: 4px;
+  display:flex;
+  flex-direction:column;
+
+  transition:transform 200mx ease-in
+}
+
+.clubimage {
+    height:12rem;
+    width:100%;
+    object-fit:cover;
+    border: black px;
+}
+
+.clubname {
+  padding:0 1rem;
+  margin: auto;
+}
+
+.clubinfo {
+  border:0;
+  padding: 4px;
+  border-radius: 5px;
+  cursor:pointer;
 }

@@ -11,6 +11,7 @@ import Events from './Events';
 import Assmu from './Assmu';
 import Calendar from './Calendar';
 import Resources from './Resources';
+import ClubDetails from './ClubDetails';
 
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
       <div className="content">
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path = "/clubs" element={<Clubs/>} />
+          <Route exact path = "/clubs" element={<Clubs/>} />
+          <Route path ='/clubs/:slug' element ={<ClubDetails/>} />
           <Route path = "/events" element={<Events/>} />
           <Route path = "/assmu" element={<Assmu/>} />
           <Route path = "/calendar" element={<Calendar/>} />

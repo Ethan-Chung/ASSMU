@@ -18,15 +18,17 @@ const Clubs = () => {
   
     const arr = Object.values(info)
 
+
     return ( 
         <div className="allclubs">
             {
-            arr.map((blogs, i) => {
+            arr.map((clubs) => {
               return (
-                <div className = "card">
-                  <img src={`${blogs.metadata.hero.imgix_url}`} className = "clubimage" alt='clubimage'></img>
-                  <div dangerouslySetInnerHTML={{__html:blogs.title}} className = "clubname"></div>
-                  <button className="clubinfo">More info</button>
+                <div className = "card" key = {clubs.slug}>
+                  <Link to = {`/clubs/${clubs.slug}`}>
+                    <img src={`${clubs.metadata.hero.imgix_url}`} className = "clubimage" alt='clubimage'></img>
+                    <div dangerouslySetInnerHTML={{__html:clubs.title}} className = "clubname"></div>
+                  </Link>
                 </div>
               )
             })

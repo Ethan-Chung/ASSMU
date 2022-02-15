@@ -11,7 +11,6 @@ import Events from './Events';
 import Assmu from './Assmu';
 import Calendar from './Calendar';
 import Resources from './Resources';
-import LoginForm from './Components/loginForm';
 
 
 function App() {
@@ -36,9 +35,6 @@ function App() {
       <Navbar />
       <div className="content">
         <Routes>
-          {/* login page */}
-          <Route path='/login' element={ <LoginForm /> } />
-
           <Route exact path="/" element={<Home />} />
           <Route path = "/clubs" element={<Clubs/>} />
           <Route path = "/events" element={<Events/>} />

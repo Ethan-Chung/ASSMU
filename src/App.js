@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import './App.css';
 import axios from 'axios';
 import Navbar from './Navbar';
-import './App.css';
 import Home from './Home';
 import Contact from './Contact'
 import NotFound from './NotFound';
 import Clubs from './Clubs';
-import Events from './Events';
 import Assmu from './Assmu';
 import Calendar from './Calendar';
 import Resources from './Resources';
 import LoginForm from './Components/loginForm';
+import Events from './Components/Events';
 
 
 function App() {

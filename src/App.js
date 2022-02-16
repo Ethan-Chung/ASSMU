@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     axios.get(url, {
-      'Content-Type':'text/html'     
+      'Content-Type':'application/json'     
     }).then(response => {
         setInfo(response.data)
         console.log(response.data)
@@ -38,7 +38,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path = "/clubs" element={<Clubs/>} />
-          <Route path ='/clubs/:slug' element ={<ClubDetails/>} />
+          <Route path ='/clubs/:slug' element ={<ClubDetails data = {arr}/>} />
           <Route path = "/events" element={<Events/>} />
           <Route path = "/assmu" element={<Assmu/>} />
           <Route path = "/calendar" element={<Calendar/>} />

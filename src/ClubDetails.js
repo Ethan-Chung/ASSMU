@@ -18,11 +18,11 @@ const ClubDetails = () => {
           console.log(response.data)
         })
     }, [])
-  
     const arr = Object.values(info)
+    const arr2 = Object.keys(info);
     return ( 
         <div className="allclubs">
-            {slug}
+            {arr2}
         </div>
      );
 }

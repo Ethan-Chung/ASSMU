@@ -8,14 +8,26 @@
 * {
   margin: 0;
   font-family: "Outfit";
+}
+h1 {
+  color: #BA0C2F; 
+  padding: 25px;
+}
+h2 {
   color: #BA0C2F;
+  padding: 20px;
+}
+p {
+  padding: 10px;
 }
 
 .content {
-
   margin: 20x auto;
   padding: 5px;
+}
 
+Link :focus, :hover, :visited, :link, :active {
+  text-decoration: none;
 }
 
 /* ASSMU LOGO STYLE */
@@ -32,9 +44,6 @@
   justify-content: center;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
-}
-.navbar h1 {
-  color: #BA0C2F;
 }
 .navbar .links {
   margin-left: auto;
@@ -98,24 +107,23 @@
 }
 
 .card {
-  overflow: hidden;
   box-shadow: 0 2px 20px lightgrey;
   border-radius: 4px;
   display:flex;
   flex-direction:column;
-
   transition:transform 200mx ease-in
 }
 
 .clubimage {
-    height:12rem;
-    width:100%;
-    object-fit:cover;
-    border: black px;
+  height:12rem;
+  width:100%;
+  object-fit:cover;
+  border: black 2px;
 }
 
-.clubname {
-  padding:0 1rem;
+.clubname{
+  padding:3px;
+  font-size:large;
   margin: auto;
 }
 
@@ -125,3 +133,39 @@
   border-radius: 5px;
   cursor:pointer;
 }
+
+/* Club detail styling */
+div.clubDetails {
+  padding: 50px;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  position: relative;
+}
+
+
+.clubDetailsImage {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  border: black px;
+  object-fit: cover;
+  padding: 7px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px black;
+}
+.clubDetailsTitle {
+  padding: 20px;
+}
+
+.clubDetailsContent{
+  display: block;
+  align-items:center;
+  align-content: center;
+  padding: 10px;
+  font-size: large;
+}
+
+
+

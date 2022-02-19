@@ -9,24 +9,28 @@ const Clubs = () => {
   
     useEffect(() => {
       axios.get(url, {
-        'Content-Type':'text/html'     
+        'Content-Type':'application/json'     
       }).then(response => {
           setInfo(response.data)
           console.log(response.data)
         })
     }, [])
-  
+    
     const arr = Object.values(info)
+
 
     return ( 
         <div className="allclubs">
             {
-            arr.map((blogs, i) => {
+            //img src will be club logo
+            //club.title is each club name
+            arr.map((clubs, index) => {
               return (
-                <div className = "card">
-                  <img src={`${blogs.metadata.hero.imgix_url}`} className = "clubimage" alt='clubimage'></img>
-                  <div dangerouslySetInnerHTML={{__html:blogs.title}} className = "clubname"></div>
-                  <button className="clubinfo">More info</button>
+                <div className = "card" key = {index}>
+                  <Link to = {`/clubs/${clubs.slug}`}>
+                    <img src={`${clubs.metadata.hero.imgix_url}`} className = "clubimage" alt='clubimage'></img>
+                    <div className = "clubname"> {clubs.title} </div>
+                  </Link>
                 </div>
               )
             })

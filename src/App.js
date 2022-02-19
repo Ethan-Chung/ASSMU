@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import axios from 'axios';
-import Navbar from './Navbar';
+import Navbar from './components/Navbar';
 import './App.css';
 import Home from './Home';
 import Contact from './Contact'
-import NotFound from './NotFound';
-import Clubs from './Clubs';
+import NotFound from './components/NotFound';
+import Clubs from './components/Clubs';
 import Events from './Events';
 import Assmu from './Assmu';
 import Calendar from './Calendar';
 import Resources from './Resources';
+import ClubDetails from './components/ClubDetails';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
 
   useEffect(() => {
     axios.get(url, {
-      'Content-Type':'text/html'     
+      'Content-Type':'application/json'     
     }).then(response => {
         setInfo(response.data)
         console.log(response.data)
@@ -36,7 +37,8 @@ function App() {
       <div className="content">
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path = "/clubs" element={<Clubs/>} />
+          <Route exact path = "/clubs" element={<Clubs/>} />
+          <Route path ='/clubs/:slug' element ={<ClubDetails data = {arr}/>} />
           <Route path = "/events" element={<Events/>} />
           <Route path = "/assmu" element={<Assmu/>} />
           <Route path = "/calendar" element={<Calendar/>} />

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import assmulogo from './assmulogo.jpg';
+import assmulogo from '../images/assmulogo.jpg';
 import React from "react";
 
 const Navbar = () => {

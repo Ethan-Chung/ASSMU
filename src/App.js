@@ -3,15 +3,15 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './components/Navbar';
 import './App.css';
-import Home from './Home';
-import Contact from './Contact'
+import Home from './components/Home';
+import Contact from './components/Contact'
 import NotFound from './components/NotFound';
 import Clubs from './components/Clubs';
-import Events from './Events';
 import Assmu from './components/Assmu';
-import Calendar from './Calendar';
-import Resources from './Resources';
+import Resources from './components/Resources';
 import ClubDetails from './components/ClubDetails';
+import Events from './components/Events';
+import Calendar from './components/Calendar';
 
 
 function App() {

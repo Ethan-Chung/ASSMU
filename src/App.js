@@ -8,7 +8,7 @@ import Contact from './Contact'
 import NotFound from './components/NotFound';
 import Clubs from './components/Clubs';
 import Events from './Events';
-import Assmu from './Assmu';
+import Assmu from './components/Assmu';
 import Calendar from './Calendar';
 import Resources from './Resources';
 import ClubDetails from './components/ClubDetails';

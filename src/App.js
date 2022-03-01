@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import axios from 'axios';
-import Navbar from './components/Navbar';
+import Navbars from './components/Navbar';
 import './App.css';
 import Home from './components/Home';
 import Contact from './components/Contact'
@@ -12,6 +12,7 @@ import Resources from './components/Resources';
 import ClubDetails from './components/ClubDetails';
 import Events from './components/Events';
 import Calendar from './components/Calendar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <Navbar />
+      <Navbars />
       <div className="content">
         <Routes>
           <Route exact path="/" element={<Home />} />

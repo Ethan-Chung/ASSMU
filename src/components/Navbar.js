@@ -1,7 +1,7 @@
 import { Link} from 'react-router-dom';
 import assmulogo from '../images/assmulogo.jpg';
 import React from "react";
-import { Container, Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
+import { Container, Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 
 const Navbars = () => {
     return (
@@ -10,7 +10,7 @@ const Navbars = () => {
         <Navbar bg="light" expand="lg">
         <Container>
             <Navbar.Brand as={Link} to={"/"} className="navbar">
-                <img src={assmulogo} id="logo" className="navbar-image"/>
+                <img src={assmulogo} id="logo" alt="logo" className="navbar-image"/>
                 ASSMU
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -23,6 +23,10 @@ const Navbars = () => {
                 <Nav.Link as={Link} to={"/resources"}>Resources</Nav.Link>
                 <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link>          
             </Nav>
+            <Form className="d-flex">
+                <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search"/>
+                <Button variant="outline-success">Search</Button>
+            </Form>
             </Navbar.Collapse>
         </Container>
         </Navbar>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Google_Api_Key, Client_Id, Calendar_Id } from "../config.js";
+import { Google_Api_Key, Client_Id} from "../config.js";
 
 function Events() {
 

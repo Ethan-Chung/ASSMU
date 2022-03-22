@@ -176,5 +176,28 @@ div.clubDetails {
   font-size: large;
 }
 
-
+/* ASSMU styling */
+.allOfficers {
+  display:block;
+  flex-direction: column;
+  height: 250px;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.officers {
+  box-shadow: 0 2px 20px darkgrey;
+  border-radius: 4px;
+  display:flex;
+  padding: 25px;
+  margin: 102px;
+}
+.officerImage {
+  width: 400px;
+  height: 400px;
+  border: black px;
+  object-fit: cover;
+  padding: 7px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px black;
+}
 

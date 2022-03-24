@@ -20,12 +20,23 @@ h2 {
 }
 p {
   padding: 10px;
+  font-size: 18px;
 }
-
 .content {
   margin: 20x auto;
   padding: 5px;
 }
+
+/* unvisited link */
+a:link {
+  color: #BA0C2F;
+}
+
+/* visited link */
+a:visited {
+  color: purple;
+}
+
 
 
 Link :focus, :hover, :visited, :link, :active {
@@ -217,7 +228,10 @@ div.clubDetails {
   text-align: start;
 }
 .officerName {
-  font-size: 30px;
+  font-size: 38px;
+}
+.officerRole{
+  font-size:24px;
 }
 
 .officerImage {
@@ -238,4 +252,5 @@ div.clubDetails {
   grid-column: 1/7;
   text-align: start;
 }
+
 

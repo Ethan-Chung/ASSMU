@@ -29,6 +29,7 @@ const Assmu = () => {
                     <div className="officerBundle">
                         <p className="officerName">{officer.title}</p>
                         <p className="officerRole">{officer.metadata.officer_role}</p>
+                        <p className="officerEmail"> <a href= {'mailto:${officer.metadata.officer_email}'}>{officer.metadata.officer_email}</a></p>
                     </div>
                     <img src={`${officer.metadata.hero.imgix_url}`} className = "officerImage" alt='clubimage'></img>
                     <div dangerouslySetInnerHTML={{__html: officer.content}} className="officerDescription"></div>

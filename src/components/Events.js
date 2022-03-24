@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Google_Api_Key, Client_Id } from '../config.js';
 import { getClubTypes } from '../services/ClubTypesService';
 import ListGroup from './reusable/ListGroup.js';
+import Pagination from './reusable/Pagination.js';
 
 const Events = () => {
 	// we should initialize some of these properties to non null values because it will take some time until we
@@ -12,13 +13,18 @@ const Events = () => {
 	const [events, setEvents] = useState('');
 	const [searchQuery, setSearchQuery] = useState('');
 
-	let pluralOrSingular = '';
 	const options = {
 		weekday: 'long',
 		year: 'numeric',
 		month: 'short',
 		day: 'numeric',
 	};
+
+	const noSecondsOptions = {
+		hour: '2-digit',
+		minute: '2-digit',
+	};
+
 	const SCOPES = 'https://www.googleapis.com/auth/calendar.events.readonly'; // permissions
 
 	useEffect(() => {
@@ -121,8 +127,10 @@ const Events = () => {
 		return list.map((item) => ({
 			title: item.summary,
 			start: new Date(item.start.dateTime), // formatting our date
+			end: new Date(item.end.dateTime),
 			attachments: item.attachments, // image for our event
 			description: item.description,
+			location: item.location,
 		}));
 	};
 
@@ -131,10 +139,61 @@ const Events = () => {
 		return url.replace('open', 'uc');
 	};
 
+	const listGroupStyles = {
+		marginLeft: '3%',
+		marginTop: '3%',
+	};
+
+	const eventStyles = {
+		marginRight: '3%',
+		marginTop: '3%',
+		marginLeft: '2%',
+		textAlign: 'left',
+	};
+
+	const eventCountStyles = {
+		marginBottom: '2%',
+		fontWeight: '400',
+		fontSize: '25px',
+	};
+
+	const eventImageStyles = {
+		marginBottom: '2%',
+		marginTop: '1%',
+		width: '90%',
+	};
+
+	const eventTitleStyles = {
+		fontSize: '25px',
+		color: '#BA0C2F',
+		fontWeight: '500',
+	};
+
+	const eventDateStyles = {
+		fontSize: '18px',
+	};
+
+	const eventBodyStyles = {
+		fontSize: '18px',
+		marginBottom: '8%',
+	};
+
+	let filteredEvents = Object.values(events);
+	if (
+		// shows specified events when club types are clicked on
+		selectedClubType &&
+		selectedClubType.name &&
+		selectedClubType.name !== 'All Clubs'
+	)
+		filteredEvents = Object.values(events).filter(
+			(m) =>
+				m.attachments[1].title.replace('.txt', '') === selectedClubType.name
+		);
+
 	return (
 		<div className='row'>
 			{/* club types on left side */}
-			<div className='col-3'>
+			<div className='col-3' style={listGroupStyles}>
 				<ListGroup
 					items={clubTypes}
 					onItemSelect={handleClubTypeSelect} // when our item is selected
@@ -143,26 +202,47 @@ const Events = () => {
 			</div>
 
 			{/* events on right side */}
-			<div className='col'>
+			<div className='col' style={eventStyles}>
 				{/* proper grammar for having a plural or singular amount of events */}
-				{events.length === 1
-					? (pluralOrSingular = '')
-					: (pluralOrSingular = 's')}
-				<p>{`Showing ${events.length} event${pluralOrSingular} from our calendar.`}</p>
+				<div style={eventCountStyles}>{`Showing ${filteredEvents.length} event${
+					filteredEvents.length === 1 ? '' : 's'
+				} from our calendar.`}</div>
 
-				{/* map their contents out */}
-				{Object.values(events).map((item, index) => {
+				{/* filter and map their contents out */}
+				{filteredEvents.map((item, index) => {
 					return (
 						<div key={index}>
-							<div>{item.title}</div>
-							<div>{item.start.toLocaleDateString('en-us', options)}</div>
+							<div style={eventTitleStyles}>{item.title}</div>
+							<div style={eventDateStyles}>
+								{`Date: ${item.start.toLocaleTimeString(
+									[],
+									noSecondsOptions
+								)} - ${item.end.toLocaleTimeString(
+									[],
+									noSecondsOptions
+								)}, ${item.start.toLocaleDateString('en-us', options)}`}
+							</div>
+							<div style={eventDateStyles}>{`Location: ${item.location}`}</div>
 							<img
-								src={formatUrl(item.attachments[index].fileUrl)}
-								style={{ width: '60%' }}></img>
-							<div>{item.description}</div>
+								alt=''
+								src={formatUrl(
+									// give the correct attachment url to img tag
+									item.attachments[0].mimeType.includes('image')
+										? item.attachments[0].fileUrl
+										: item.attachments[1].fileUrl
+								)}
+								style={eventImageStyles}></img>
+							<div style={eventBodyStyles}>{item.description}</div>
 						</div>
 					);
 				})}
+
+				<Pagination
+					itemsCount={totalCount} // total number of events
+					pageSize={pageSize} // total number of pages
+					onPageChange={this.handlePageChange} // when the page changes
+					currentPage={currentPage} // the current page the user is on
+				/>
 			</div>
 		</div>
 	);

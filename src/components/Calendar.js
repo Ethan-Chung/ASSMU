@@ -2,7 +2,7 @@ import FullCalendar from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // daygrid plugin
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import interactionPlugin from '@fullcalendar/interaction';
-import { Google_Api_Key, Client_Id, Calendar_Id } from '../config.js'; // api key, client id, google calendar id
+import { Google_Api_Key, Client_Id } from '../config.js'; // api key, client id, google calendar id
 import React, { useState, useEffect } from 'react';
 
 const Calendar = () => {
@@ -73,7 +73,7 @@ const Calendar = () => {
 		}
 	};
 
-	// list the future events on Google Calendar
+	// list events on Google Calendar
 	const listUpcomingEvents = () => {
 		window.gapi.client.calendar.events
 			.list({
@@ -100,10 +100,10 @@ const Calendar = () => {
 	};
 
 	// when we click on a date
-	const handleDateClick = (arg) => {
-		// bind with an arrow function
-		arg.dayEl.style.backgroundColor = 'blue';
-	};
+	// const handleDateClick = (arg) => {
+	// 	// bind with an arrow function
+	// 	//arg.dayEl.style.backgroundColor = 'blue';
+	// };
 
 	return (
 		<div style={{ width: '95%', margin: 'auto' }}>
@@ -115,7 +115,7 @@ const Calendar = () => {
 					//center: 'day,week,month',
 					right: 'today prev,next',
 				}}
-				dateClick={handleDateClick}
+				//dateClick={handleDateClick}
 				googleCalendarApiKey={Google_Api_Key}
 				eventColor={'green'}
 				events={events}

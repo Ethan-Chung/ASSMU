@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Google_Api_Key, Client_Id } from '../config.js';
 import { getClubTypes } from '../services/ClubTypesService';
+import { paginate } from '../utils/paginate.js';
 import ListGroup from './reusable/ListGroup.js';
 import Pagination from './reusable/Pagination.js';
+import SearchBox from './reusable/searchBox.js';
 
 const Events = () => {
 	// we should initialize some of these properties to non null values because it will take some time until we
@@ -12,6 +14,8 @@ const Events = () => {
 	const [clubTypes, setClubTypes] = useState([]);
 	const [events, setEvents] = useState('');
 	const [searchQuery, setSearchQuery] = useState('');
+	const [pageSize, setPageSize] = useState(3);
+	const [currentPage, setCurrentPage] = useState(1);
 
 	const options = {
 		weekday: 'long',
@@ -56,6 +60,17 @@ const Events = () => {
 		// controlled components cannot be null or undefined, hence why searchQuery is ''
 		setSelectedClubType(clubType);
 		setSearchQuery('');
+		setCurrentPage(1); // reset current page to 1
+	};
+
+	const handlePageChange = (page) => {
+		setCurrentPage(page); // change the page in our state to the current page
+	};
+
+	const handleSearch = (query) => {
+		setSearchQuery(query);
+		setSelectedClubType(null);
+		setCurrentPage(1);
 	};
 
 	const openSignInPopup = () => {
@@ -178,8 +193,16 @@ const Events = () => {
 		marginBottom: '8%',
 	};
 
+	const searchBar = {
+		marginBottom: '3%',
+	};
+
 	let filteredEvents = Object.values(events);
-	if (
+	if (searchQuery)
+		filteredEvents = Object.values(events).filter((m) =>
+			m.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+		);
+	else if (
 		// shows specified events when club types are clicked on
 		selectedClubType &&
 		selectedClubType.name &&
@@ -189,6 +212,9 @@ const Events = () => {
 			(m) =>
 				m.attachments[1].title.replace('.txt', '') === selectedClubType.name
 		);
+
+	const paginateEvents = paginate(filteredEvents, currentPage, pageSize);
+	const totalCount = filteredEvents.length;
 
 	return (
 		<div className='row'>
@@ -204,12 +230,19 @@ const Events = () => {
 			{/* events on right side */}
 			<div className='col' style={eventStyles}>
 				{/* proper grammar for having a plural or singular amount of events */}
-				<div style={eventCountStyles}>{`Showing ${filteredEvents.length} event${
-					filteredEvents.length === 1 ? '' : 's'
+				<div style={eventCountStyles}>{`Showing ${totalCount} event${
+					totalCount === 1 ? '' : 's'
 				} from our calendar.`}</div>
 
+				{/* controlled component (gets all data from props and raises events to change data) it is directly
+                    controlled by its parent. We encapsulate this input field in a component so we have a simpler interface
+                    to work with */}
+				<div style={searchBar}>
+					<SearchBox value={searchQuery} onChange={handleSearch} />
+				</div>
+
 				{/* filter and map their contents out */}
-				{filteredEvents.map((item, index) => {
+				{paginateEvents.map((item, index) => {
 					return (
 						<div key={index}>
 							<div style={eventTitleStyles}>{item.title}</div>
@@ -240,7 +273,7 @@ const Events = () => {
 				<Pagination
 					itemsCount={totalCount} // total number of events
 					pageSize={pageSize} // total number of pages
-					onPageChange={this.handlePageChange} // when the page changes
+					onPageChange={handlePageChange} // when the page changes
 					currentPage={currentPage} // the current page the user is on
 				/>
 			</div>

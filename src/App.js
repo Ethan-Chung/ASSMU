@@ -12,6 +12,7 @@ import Resources from './components/Resources';
 import ClubDetails from './components/ClubDetails';
 import Events from './components/Events';
 import Calendar from './components/Calendar';
+import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -48,6 +49,7 @@ function App() {
           <Route path = "*" element={<NotFound />} /> 
         </Routes>
       </div>
+      <Footer />
     </div>
     </Router>
   );

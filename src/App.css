@@ -3,6 +3,9 @@
 /* base style */
 .App {
   text-align: center;
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
 }
 
 * {
@@ -25,6 +28,7 @@ p {
 .content {
   margin: 20x auto;
   padding: 5px;
+  flex: 1 0 auto;
 }
 
 /* unvisited link */
@@ -36,9 +40,6 @@ a:link {
 a:visited {
   color: purple;
 }
-
-
-
 Link :focus, :hover, :visited, :link, :active {
   text-decoration: none;
 }
@@ -47,18 +48,17 @@ Link :focus, :hover, :visited, :link, :active {
 #logo {
   width: 100px;
 }
+
 /* navbar styling */
 .navbar-image{
   padding: .5rem;
 }
-
 .navbar{
   font-size: 1vw;
 }
 .container, .container * {
   background-color: #f8f9fA;
 }
-
 @media only screen and (max-width: 1100px){
   .navbar{
     font-size: 1.5vw;
@@ -81,6 +81,25 @@ Link :focus, :hover, :visited, :link, :active {
   .navbar{
     font-size:3vw;
   }
+}
+
+/* Footer Styling */
+.footer *{
+  background-color: #F8F9FA;
+  display:grid;
+}
+.footer {
+  justify-content: center;
+  align-items: center;
+}
+.footerRows{
+  max-width: 1320px;
+  grid-template-columns: repeat(3,1fr);
+  grid-auto-rows: minmax(150px, auto);
+  grid-gap: 0px;
+  margin-top: auto;
+  align-items: center;
+  justify-items: center;
 }
 
 /* Question form  styling */
@@ -197,7 +216,6 @@ div.clubDetails {
 .allOfficers {
   display:block;
   flex-direction: column;
-  height: 250px;
   justify-content: space-between;
   align-items: stretch;
   padding: 20px;
@@ -252,5 +270,7 @@ div.clubDetails {
   grid-column: 1/7;
   text-align: start;
 }
+
+
 
 

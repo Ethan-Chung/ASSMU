@@ -23,10 +23,10 @@ const Navbars = () => {
                 <Nav.Link as={Link} to={"/resources"}>Resources</Nav.Link>
                 <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link>          
             </Nav>
-            <Form className="d-flex">
+            {/*<Form className="d-flex">
                 <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search"/>
                 <Button variant="outline-success">Search</Button>
-            </Form>
+            </Form>*/}
             </Navbar.Collapse>
         </Container>
         </Navbar>

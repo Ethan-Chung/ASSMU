@@ -102,6 +102,15 @@ Link :focus, :hover, :visited, :link, :active {
   justify-items: center;
 }
 
+/* Search Bar */
+.search{
+  
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+
+
 /* Question form  styling */
 .form {
   padding: 20px;

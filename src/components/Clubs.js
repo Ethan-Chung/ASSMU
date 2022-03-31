@@ -37,7 +37,9 @@ const Clubs = () => {
     })
 
     return ( 
-        <div>
+      <div className = "clubGrid">
+        <h1 className = "tabHeader">Clubs</h1>
+        <div className="clubSideBox">
           <div className="search">            
             <TextField 
               id="outlined-basic" 
@@ -49,23 +51,35 @@ const Clubs = () => {
               }}
             /> 
           </div>
-          <div className="allclubs">
-              {
-              //img src will be club logo
-              //club.title is each club name
-              filteredData.map((clubs, index) => {
-                return (
-                  <div className = "card" key = {index}>
-                    <Link to = {`/clubs/${clubs.slug}`}>
-                      <img src={`${clubs.metadata.hero.imgix_url}`} className = "clubimage" alt='clubimage'></img>
-                      <div className = "clubname"> {clubs.title} </div>
-                    </Link>
-                  </div>
-                )
-              })
-            }
+          <div className="clubCategory">
+              <h2>Categories</h2>
+              <select className = "clubDropDown">
+                <option value = "Sports">Sports</option>
+                <option value = "Academics">Academics</option>
+                <option value = "Culture">Culture</option>
+                <option value = "Recreational">Recreational</option>
+                <option value = "Business">Business</option>
+              </select>
           </div>
-        </div>  
+
+        </div>
+        <div className="allclubs">
+            {
+            //img src will be club logo
+            //club.title is each club name
+            filteredData.map((clubs, index) => {
+              return (
+                <div className = "card" key = {index}>
+                  <Link to = {`/clubs/${clubs.slug}`}>
+                    <img src={`${clubs.metadata.club_picture.imgix_url}`} className = "clubimage" alt='clubimage'></img>
+                    <div className = "clubname"> {clubs.title} </div>
+                  </Link>
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>  
      );
 }
  

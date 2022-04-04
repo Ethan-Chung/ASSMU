@@ -17,6 +17,12 @@ h2 {
   color: #BA0C2F;
   padding: 20px;
 }
+ul {
+  color: #BA0C2F;
+}
+li {
+  color: black
+}
 p {
   padding: 10px;
   font-size: 18px;
@@ -32,6 +38,7 @@ p {
   justify-content: left;
   margin-right: auto;
 }
+
 /* unvisited link */
 a:link {
   color: #BA0C2F;
@@ -97,6 +104,11 @@ Link :focus, :hover, :visited, :link, :active {
   background-color: rgb(173, 173, 173);
   box-shadow: 4px 5px 14px 0px rgba(0,0,0,0.69);
   border-radius: 7px;
+}
+.formGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form h1 {
@@ -257,7 +269,7 @@ div.clubDetails {
   font-size: 4vw;
 }
 .officerRole, .officerEmail{
-  font-size: 3vw;
+  font-size: 2.5vw;
 }
 
 .officerImage {
@@ -277,5 +289,17 @@ div.clubDetails {
   grid-row:2;
   grid-column: 1/7;
   text-align: start;
+}
+
+/* Resources styling */
+.resources {
+  text-align: left;
+}
+.resources ul {
+  font-size: 3em;
+}
+.resources li {
+  font-size: 0.5em;
+  margin-left: 30px;
 }
 

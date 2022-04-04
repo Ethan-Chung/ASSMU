@@ -53,18 +53,6 @@ const Clubs = () => {
                 }}
               /> 
             </div>
-            <div className="clubCategory">
-                <h2>Categories</h2>
-                <select className = "clubDropDown" value = {inputText} onChange={inputHandler}>
-                  <option value = ''>All</option>
-                  <option value = "test">test</option>
-                  <option value = "Academics">Academics</option>
-                  <option value = "Culture">Culture</option>
-                  <option value = "Recreational">Recreational</option>
-                  <option value = "Business">Business</option>
-                </select>
-            </div>
-
           </div>
           <div className="allclubs">
               {

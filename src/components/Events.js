@@ -217,65 +217,68 @@ const Events = () => {
 	const totalCount = filteredEvents.length;
 
 	return (
-		<div className='row'>
-			{/* club types on left side */}
-			<div className='col-3' style={listGroupStyles}>
-				<ListGroup
-					items={clubTypes}
-					onItemSelect={handleClubTypeSelect} // when our item is selected
-					selectedItem={selectedClubType}
-				/>
-			</div>
-
-			{/* events on right side */}
-			<div className='col' style={eventStyles}>
-				{/* proper grammar for having a plural or singular amount of events */}
-				<div style={eventCountStyles}>{`Showing ${totalCount} event${
-					totalCount === 1 ? '' : 's'
-				} from our calendar.`}</div>
-
-				{/* controlled component (gets all data from props and raises events to change data) it is directly
-                    controlled by its parent. We encapsulate this input field in a component so we have a simpler interface
-                    to work with */}
-				<div style={searchBar}>
-					<SearchBox value={searchQuery} onChange={handleSearch} />
+		<div>
+			<h1 className = "tabHeader">Events</h1>
+			<div className='row'>
+				{/* club types on left side */}
+				<div className='col-3' style={listGroupStyles}>
+					<ListGroup
+						items={clubTypes}
+						onItemSelect={handleClubTypeSelect} // when our item is selected
+						selectedItem={selectedClubType}
+					/>
 				</div>
 
-				{/* filter and map their contents out */}
-				{paginateEvents.map((item, index) => {
-					return (
-						<div key={index}>
-							<div style={eventTitleStyles}>{item.title}</div>
-							<div style={eventDateStyles}>
-								{`Date: ${item.start.toLocaleTimeString(
-									[],
-									noSecondsOptions
-								)} - ${item.end.toLocaleTimeString(
-									[],
-									noSecondsOptions
-								)}, ${item.start.toLocaleDateString('en-us', options)}`}
-							</div>
-							<div style={eventDateStyles}>{`Location: ${item.location}`}</div>
-							<img
-								alt=''
-								src={formatUrl(
-									// give the correct attachment url to img tag
-									item.attachments[0].mimeType.includes('image')
-										? item.attachments[0].fileUrl
-										: item.attachments[1].fileUrl
-								)}
-								style={eventImageStyles}></img>
-							<div style={eventBodyStyles}>{item.description}</div>
-						</div>
-					);
-				})}
+				{/* events on right side */}
+				<div className='col' style={eventStyles}>
+					{/* proper grammar for having a plural or singular amount of events */}
+					<div style={eventCountStyles}>{`Showing ${totalCount} event${
+						totalCount === 1 ? '' : 's'
+					} from our calendar.`}</div>
 
-				<Pagination
-					itemsCount={totalCount} // total number of events
-					pageSize={pageSize} // total number of pages
-					onPageChange={handlePageChange} // when the page changes
-					currentPage={currentPage} // the current page the user is on
-				/>
+					{/* controlled component (gets all data from props and raises events to change data) it is directly
+						controlled by its parent. We encapsulate this input field in a component so we have a simpler interface
+						to work with */}
+					<div style={searchBar}>
+						<SearchBox value={searchQuery} onChange={handleSearch} />
+					</div>
+
+					{/* filter and map their contents out */}
+					{paginateEvents.map((item, index) => {
+						return (
+							<div key={index}>
+								<div style={eventTitleStyles}>{item.title}</div>
+								<div style={eventDateStyles}>
+									{`Date: ${item.start.toLocaleTimeString(
+										[],
+										noSecondsOptions
+									)} - ${item.end.toLocaleTimeString(
+										[],
+										noSecondsOptions
+									)}, ${item.start.toLocaleDateString('en-us', options)}`}
+								</div>
+								<div style={eventDateStyles}>{`Location: ${item.location}`}</div>
+								<img
+									alt=''
+									src={formatUrl(
+										// give the correct attachment url to img tag
+										item.attachments[0].mimeType.includes('image')
+											? item.attachments[0].fileUrl
+											: item.attachments[1].fileUrl
+									)}
+									style={eventImageStyles}></img>
+								<div style={eventBodyStyles}>{item.description}</div>
+							</div>
+						);
+					})}
+
+					<Pagination
+						itemsCount={totalCount} // total number of events
+						pageSize={pageSize} // total number of pages
+						onPageChange={handlePageChange} // when the page changes
+						currentPage={currentPage} // the current page the user is on
+					/>
+				</div>
 			</div>
 		</div>
 	);

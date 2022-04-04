@@ -36,7 +36,6 @@ const Assmu = () => {
                     <img src={`${officer.metadata.hero.imgix_url}`} className = "officerImage" alt='clubimage'></img>
                     <div dangerouslySetInnerHTML={{__html: officer.content}} className="officerDescription"></div>
                 </div>
-                
               )
             })
           }

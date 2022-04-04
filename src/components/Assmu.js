@@ -19,6 +19,8 @@ const Assmu = () => {
     const arr = Object.values(info)
 
     return ( 
+      <div>
+        <h1 className = "tabHeader">Officers</h1>
         <div className="allOfficers">
             {
             //img src will be club logo
@@ -39,6 +41,7 @@ const Assmu = () => {
             })
           }
         </div>
+      </div>
      );
 }
  

@@ -143,12 +143,12 @@ Link :focus, :hover, :visited, :link, :active {
   grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
   gap:2rem;
   justify-content: left;
-  grid-row: 2;
+
   grid-column: 2/7;
 
 }
 .clubSideBox {
-  grid-row:2;
+
   grid-column: 1;
   padding-left: 20px;
   margin-bottom: auto;
@@ -254,10 +254,10 @@ div.clubDetails {
   text-align: start;
 }
 .officerName {
-  font-size: 38px;
+  font-size: 4vw;
 }
-.officerRole{
-  font-size:24px;
+.officerRole, .officerEmail{
+  font-size: 3vw;
 }
 
 .officerImage {
@@ -278,5 +278,4 @@ div.clubDetails {
   grid-column: 1/7;
   text-align: start;
 }
-
 

@@ -38,49 +38,50 @@ const Clubs = () => {
 
 
     return ( 
-      <div className = "clubGrid">
+      <div>
         <h1 className = "tabHeader">Clubs</h1>
-        <div className="clubSideBox">
-          <div className="search">            
-            <TextField 
-              id="outlined-basic" 
-              onChange={inputHandler} 
-              variant="standard" 
-              label="Search" 
-              InputProps={{
-                endAdornment: <InputAdornment position="end"><SearchIcon/></InputAdornment>
-              }}
-            /> 
-          </div>
-          <div className="clubCategory">
-              <h2>Categories</h2>
-              <select className = "clubDropDown" value = {inputText} onChange={inputHandler}>
-                <option value = "">All</option>
-                <option value = "test">test</option>
-                <option value = "Academics">Academics</option>
-                <option value = "Culture">Culture</option>
-                <option value = "Recreational">Recreational</option>
-                <option value = "Business">Business</option>
-              </select>
-              <p>We eat {inputText}</p>
-          </div>
+        <div className = "clubGrid">
+          <div className="clubSideBox">
+            <div className="search">            
+              <TextField 
+                id="outlined-basic" 
+                onChange={inputHandler} 
+                variant="standard" 
+                label="Search" 
+                InputProps={{
+                  endAdornment: <InputAdornment position="end"><SearchIcon/></InputAdornment>
+                }}
+              /> 
+            </div>
+            <div className="clubCategory">
+                <h2>Categories</h2>
+                <select className = "clubDropDown" value = {inputText} onChange={inputHandler}>
+                  <option value = ''>All</option>
+                  <option value = "test">test</option>
+                  <option value = "Academics">Academics</option>
+                  <option value = "Culture">Culture</option>
+                  <option value = "Recreational">Recreational</option>
+                  <option value = "Business">Business</option>
+                </select>
+            </div>
 
-        </div>
-        <div className="allclubs">
-            {
-            //img src will be club logo
-            //club.title is each club name
-            filteredData.map((clubs, index) => {
-              return (
-                <div className = "card" key = {index}>
-                  <Link to = {`/clubs/${clubs.slug}`}>
-                    <img src={`${clubs.metadata.club_picture.imgix_url}`} className = "clubimage" alt='clubimage'></img>
-                    <div className = "clubname"> {clubs.title} </div>
-                  </Link>
-                </div>
-              )
-            })
-          }
+          </div>
+          <div className="allclubs">
+              {
+              //img src will be club logo
+              //club.title is each club name
+              filteredData.map((clubs, index) => {
+                return (
+                  <div className = "card" key = {index}>
+                    <Link to = {`/clubs/${clubs.slug}`}>
+                      <img src={`${clubs.metadata.club_picture.imgix_url}`} className = "clubimage" alt='clubimage'></img>
+                      <div className = "clubname"> {clubs.title} </div>
+                    </Link>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
       </div>  
      );

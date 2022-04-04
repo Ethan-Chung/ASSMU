@@ -36,6 +36,7 @@ const Clubs = () => {
       }
     })
 
+
     return ( 
       <div className = "clubGrid">
         <h1 className = "tabHeader">Clubs</h1>
@@ -53,13 +54,15 @@ const Clubs = () => {
           </div>
           <div className="clubCategory">
               <h2>Categories</h2>
-              <select className = "clubDropDown">
-                <option value = "Sports">Sports</option>
+              <select className = "clubDropDown" value = {inputText} onChange={inputHandler}>
+                <option value = "">All</option>
+                <option value = "test">test</option>
                 <option value = "Academics">Academics</option>
                 <option value = "Culture">Culture</option>
                 <option value = "Recreational">Recreational</option>
                 <option value = "Business">Business</option>
               </select>
+              <p>We eat {inputText}</p>
           </div>
 
         </div>

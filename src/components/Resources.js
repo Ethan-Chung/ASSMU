@@ -30,7 +30,7 @@ const Resources = () => {
                 </ul>
                 <ul>
                     List of places
-                    <li>e10 house</li>
+                    <li>e10</li>
                 </ul>
             </div>
         </div>

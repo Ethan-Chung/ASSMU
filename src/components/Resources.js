@@ -5,7 +5,7 @@ import React from "react";
 const Resources = () => {
 
     const [info, setInfo] = useState('');
-    const url = 'http://localhost:3001/officers'
+    const url = 'http://localhost:3001/resources'
   
     useEffect(() => {
       axios.get(url, {
@@ -16,21 +16,20 @@ const Resources = () => {
         })
     }, [])
 
+    const arr = Object.values(info)
+
     return ( 
         <div>
             <h1 className = "tabHeader">Resources</h1>
             <div className = "resources">
                 <ul>
-                    List of drinks
-                    <li>bofa</li>
-                </ul>
-                <ul>
-                    List of foods
-                    <li>ethan</li>
-                </ul>
-                <ul>
-                    List of places
-                    <li>e10</li>
+                    {
+                        arr.map((links,index) => {
+                            return (
+                                <li><a href = {links.metadata.resource_link.url}>{links.title}</a></li>
+                            )
+                        })
+                    }               
                 </ul>
             </div>
         </div>

@@ -266,11 +266,13 @@ div.clubDetails {
   text-align: start;
 }
 .officerName {
-  font-size: 4vw;
+  font-size: min(max(16px, 4vw), 32px);
+  font-weight: bold;
 }
 .officerRole, .officerEmail{
-  font-size: 2.5vw;
+  font-size: min(max(12px, 2vw), 18px);
 }
+
 
 .officerImage {
   width: 30vw;

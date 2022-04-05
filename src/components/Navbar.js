@@ -9,7 +9,7 @@ const Navbars = () => {
         <div>            
         <Navbar bg="light" expand="lg">
         <Container>
-            <Navbar.Brand as={Link} to={"/"} className="navbar">
+            <Navbar.Brand as={Link} to={"/clubs"} className="navbar">
                 <img src={assmulogo} id="logo" alt="logo" className="navbar-image"/>
                 ASSMU
             </Navbar.Brand>

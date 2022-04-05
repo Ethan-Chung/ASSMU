@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import axios from 'axios';
 import Navbars from './components/Navbar';
 import './App.css';
-import Home from './components/Home';
 import Contact from './components/Contact'
 import NotFound from './components/NotFound';
 import Clubs from './components/Clubs';
@@ -37,7 +36,7 @@ function App() {
       <Navbars />
       <div className="content">
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<Clubs />} />
           <Route exact path = "/clubs" element={<Clubs/>} />
           <Route path ='/clubs/:slug' element ={<ClubDetails data = {arr}/>} />
           <Route path = "/events" element={<Events/>} />

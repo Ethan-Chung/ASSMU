@@ -9,7 +9,7 @@ const Navbars = () => {
         <div>            
         <Navbar bg="light" expand="lg">
         <Container>
-            <Navbar.Brand as={Link} to={"/"} className="navbar">
+            <Navbar.Brand as={Link} to={"/clubs"} className="navbar">
                 <img src={assmulogo} id="logo" alt="logo" className="navbar-image"/>
                 ASSMU
             </Navbar.Brand>
@@ -23,10 +23,10 @@ const Navbars = () => {
                 <Nav.Link as={Link} to={"/resources"}>Resources</Nav.Link>
                 <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link>          
             </Nav>
-            <Form className="d-flex">
+            {/*<Form className="d-flex">
                 <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search"/>
                 <Button variant="outline-success">Search</Button>
-            </Form>
+            </Form>*/}
             </Navbar.Collapse>
         </Container>
         </Navbar>

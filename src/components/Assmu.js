@@ -19,6 +19,8 @@ const Assmu = () => {
     const arr = Object.values(info)
 
     return ( 
+      <div>
+        <h1 className = "tabHeader">Officers</h1>
         <div className="allOfficers">
             {
             //img src will be club logo
@@ -34,11 +36,11 @@ const Assmu = () => {
                     <img src={`${officer.metadata.hero.imgix_url}`} className = "officerImage" alt='clubimage'></img>
                     <div dangerouslySetInnerHTML={{__html: officer.content}} className="officerDescription"></div>
                 </div>
-                
               )
             })
           }
         </div>
+      </div>
      );
 }
  

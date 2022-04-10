@@ -27,22 +27,22 @@ const ClubDetails = (data) => {
         <div>
             {arr.filter(card => card.slug === slug).map((card, index) => (
               <div key = {index} className="clubDetails">
-                <img src= {card.metadata.hero.imgix_url} alt="club logo" className="clubDetailsImage" />
+                <img src= {card.metadata.club_picture.imgix_url} alt="club logo" className="clubDetailsImage" />
                 <h1 className = "clubDetailsTitle">{card.title}</h1>
                 <p dangerouslySetInnerHTML={{ __html: card.content }} className = "clubDetailsContent"></p>
                 <h2 className="clubDetailsSub">Additional information</h2>
                 <p>
-                  <strong>Club Contact: </strong>PLACEHOLDER
+                  <strong>Club Contact: </strong>{card.metadata.club_contact}
                   <br />
-                  <strong>President: </strong>PLACEHOLDER
+                  <strong>President: </strong>{card.metadata.president}
                   <br />
-                  <strong>Vice President: </strong>PLACEHOLDER
+                  <strong>Vice President: </strong>{card.metadata.vice_president}
                   <br />
-                  <strong>Secretary: </strong>PLACEHOLDER
+                  <strong>Secretary: </strong>{card.metadata.secretary}
                   <br />
-                  <strong>Treasurer: </strong>PLACEHOLDER
+                  <strong>Treasurer: </strong>{card.metadata.treasurer}
                   <br />
-                  <strong>Advisor: </strong>PLACEHOLDER
+                  <strong>Advisor: </strong>{card.metadata.advisor}
                   <br />
                 </p>
               </div>

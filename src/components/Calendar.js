@@ -106,22 +106,25 @@ const Calendar = () => {
 	// };
 
 	return (
-		<div style={{ width: '95%', margin: 'auto' }}>
-			<FullCalendar
-				plugins={[dayGridPlugin, interactionPlugin, googleCalendarPlugin]}
-				initialView='dayGridMonth'
-				headerToolbar={{
-					left: 'title',
-					//center: 'day,week,month',
-					right: 'today prev,next',
-				}}
-				//dateClick={handleDateClick}
-				googleCalendarApiKey={Google_Api_Key}
-				eventColor={'green'}
-				events={events}
+		<div>
+			<h1 className = "tabHeader">Calendar</h1>
+			<div style={{ width: '95%', margin: 'auto' }}>
+				<FullCalendar
+					plugins={[dayGridPlugin, interactionPlugin, googleCalendarPlugin]}
+					initialView='dayGridMonth'
+					headerToolbar={{
+						left: 'title',
+						//center: 'day,week,month',
+						right: 'today prev,next',
+					}}
+					//dateClick={handleDateClick}
+					googleCalendarApiKey={Google_Api_Key}
+					eventColor={'green'}
+					events={events}
 
-				//backgroundColor="#8ad2ec"
-			/>
+					//backgroundColor="#8ad2ec"
+				/>
+			</div>
 		</div>
 	);
 };

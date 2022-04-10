@@ -40,6 +40,7 @@ const Events = () => {
 			.then((response) => {
 				setInfo(response.data);
 				console.log(response.data);
+				setEvents(formatEvents(response.data));
 			});
 		// clone existing array and add new clubType item to it
 		const clubTypes = [{ _id: '', name: 'All Clubs' }, ...getClubTypes()];
@@ -64,23 +65,6 @@ const Events = () => {
 		setSearchQuery(query);
 		setSelectedClubType(null);
 		setCurrentPage(1);
-	};
-
-	// list events on Google Calendar
-	const listUpcomingEvents = () => {
-		window.gapi.client.calendar.events
-			.list({
-				// Fetch events from user's primary calendar
-				calendarId: 'primary',
-				singleEvents: true,
-			})
-			.then(function (response) {
-				let events = response.result.items;
-
-				if (events.length > 0) {
-					setEvents(formatEvents(events));
-				}
-			});
 	};
 
 	// setting our values
@@ -164,7 +148,7 @@ const Events = () => {
 
 	return (
 		<div>
-			<h1 className = "tabHeader">Events</h1>
+			<h1 className='tabHeader'>Events</h1>
 			<div className='row'>
 				{/* club types on left side */}
 				<div className='col-3' style={listGroupStyles}>
@@ -203,7 +187,8 @@ const Events = () => {
 										noSecondsOptions
 									)}, ${item.start.toLocaleDateString('en-us', options)}`}
 								</div>
-								<div style={eventDateStyles}>{`Location: ${item.location}`}</div>
+								<div
+									style={eventDateStyles}>{`Location: ${item.location}`}</div>
 								<img
 									alt=''
 									src={formatUrl(
